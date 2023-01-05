@@ -1,16 +1,21 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { ListBoxOption } from "../../types/data";
 
 const MyListbox = ({
   option,
   isDisabled,
+  selectedOption,
+  setSelectedOption,
 }: {
-  option: any;
+  option: ListBoxOption[];
   isDisabled: boolean;
+  selectedOption: ListBoxOption | null;
+  setSelectedOption: (option: ListBoxOption) => void;
 }) => {
-  const [selectedOption, setSelectedOption] = useState(option[0]);
-
+  // if (isDisabled) setSelectedOption(null);
+  // if (selectedOption == null) setSelectedOption(option[0]);
   return (
     <div className="w-36">
       <Listbox
@@ -20,7 +25,9 @@ const MyListbox = ({
       >
         <div className={`relative mt-1 ${isDisabled ? "brightness-90" : ""}`}>
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-            <span className="block truncate">{selectedOption.name}</span>
+            <span className="block truncate">
+              {selectedOption ? selectedOption.name : "&nbsp"}
+            </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-gray-400"

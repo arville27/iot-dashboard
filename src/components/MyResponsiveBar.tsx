@@ -1,25 +1,30 @@
 // install (please make sure versions match peerDependencies)
 // yarn add @nivo/core @nivo/bar
 import { ResponsiveBar } from "@nivo/bar";
+import { GuestArrival } from "../types/data";
 
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const MyResponsiveBar = ({ data /* see data tab */ }: { data: any }) => {
+const MyResponsiveBar = ({
+  data /* see data tab */,
+}: {
+  data: GuestArrival[];
+}) => {
   return (
     <>
       <ResponsiveBar
         data={data}
-        keys={["AM", "PM"]}
-        indexBy="weekDay"
+        keys={["y"]}
+        indexBy="x"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         groupMode="grouped"
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
-        colors={{ scheme: "nivo" }}
+        colors={{ scheme: "paired" }}
         defs={[
           {
             id: "dots",
@@ -38,20 +43,6 @@ const MyResponsiveBar = ({ data /* see data tab */ }: { data: any }) => {
             rotation: -45,
             lineWidth: 6,
             spacing: 10,
-          },
-        ]}
-        fill={[
-          {
-            match: {
-              id: "AM",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "PM",
-            },
-            id: "lines",
           },
         ]}
         borderColor={{
