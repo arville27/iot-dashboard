@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { ListBoxOption } from "../../types/data";
@@ -14,8 +14,6 @@ const MyListbox = ({
   selectedOption: ListBoxOption | null;
   setSelectedOption: (option: ListBoxOption) => void;
 }) => {
-  // if (isDisabled) setSelectedOption(null);
-  // if (selectedOption == null) setSelectedOption(option[0]);
   return (
     <div className="w-36">
       <Listbox

@@ -5,9 +5,9 @@ type MyDialogStore = {
   setIsOpen: (isOpen: boolean) => void;
 };
 
-const useMyDialogStore = create<MyDialogStore>((set) => ({
-  isOpen: true,
+const useMyMessageDialogStore = create<MyDialogStore>((set) => ({
+  isOpen: false,
   setIsOpen: (bool) => set((state) => ({ ...state, isOpen: bool })),
 }));
 
-export default useMyDialogStore;
+export default useMyMessageDialogStore;
