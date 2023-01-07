@@ -21,7 +21,7 @@ const MyResponsiveCalendar = ({ data }: { data: any }) => {
         to="2016-01-31"
         emptyColor="#e2e8f4"
         colors={["#C8B6E2", "#A8A4CE", "#7A86B6", "#495C83"]}
-        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        margin={{ top: 0, right: 0, bottom: 0, left: 57 }}
         yearSpacing={40}
         daySpacing={2}
         monthBorderColor="#f0f6ff"
@@ -35,7 +35,7 @@ const MyResponsiveCalendar = ({ data }: { data: any }) => {
             itemWidth: 42,
             itemHeight: 36,
             itemsSpacing: 2,
-            padding: { bottom: 4 },
+            padding: { bottom: 4, right: 57 },
             itemDirection: "right-to-left",
           },
         ]}

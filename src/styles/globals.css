@@ -9,6 +9,7 @@
 
 .scrollbar::-webkit-scrollbar {
   @apply w-1.5;
+  @apply h-2;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
