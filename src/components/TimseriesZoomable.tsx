@@ -1,29 +1,12 @@
-import { dataGraph } from "../dummy";
 import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
-import useMyDetailDialogStore from "./dialog/detailDialog/useMyDetailDialogStore";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-
-const series = [
-  {
-    name: "GuestCount",
-    data: dataGraph.map((data) => [
-      new Date(data.dateTime).getTime(),
-      data.value,
-    ]),
-  },
-];
 
 type Props = {
   data: [number, number][];
 };
 
 const TimeseriesZoomable: React.FC<Props> = ({ data }) => {
-  const setDetailDialogIsOpen = useMyDetailDialogStore(
-    (state) => state.setIsOpen
-  );
-  const setDetailDialogData = useMyDetailDialogStore((state) => state.setData);
-
   const options: ApexOptions = {
     chart: {
       height: 300,
