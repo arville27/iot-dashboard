@@ -1,17 +1,19 @@
 import create from "zustand";
 
+type DialogData = { date: Date; data: Date[] };
+
 type MyDetailDialogStore = {
   isOpen: boolean;
-  date: Date | null;
+  data: DialogData | null;
   setIsOpen: (isOpen: boolean) => void;
-  setDate: (date: Date) => void;
+  setData: (date: DialogData) => void;
 };
 
 const useMyDetailDialogStore = create<MyDetailDialogStore>((set) => ({
   isOpen: false,
-  date: null,
+  data: null,
   setIsOpen: (bool) => set((state) => ({ ...state, isOpen: bool })),
-  setDate: (date) => set((state) => ({ ...state, date: date })),
+  setData: (data) => set((state) => ({ ...state, data: data })),
 }));
 
 export default useMyDetailDialogStore;
