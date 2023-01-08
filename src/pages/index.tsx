@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { baseUrl, mqttConfig } from "../utils/config";
 import useMyMessageDialogStore from "../components/dialog/messageDialog/useMyMessageDialogStore";
 import mqtt from "mqtt";
+import Head from "next/head";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -38,45 +39,50 @@ const Home: React.FC<Props> = ({ data }) => {
   if (!data) return null;
 
   return (
-    <div className={`min-h-screen bg-base-300 ${poppins.className}`}>
-      <MyHeader />
-      <main className="scrollbar container mx-auto mt-10">
-        <div className="mb-20 flex flex-col gap-8">
-          <h1 className="mx-auto text-3xl font-medium text-base-content">
-            Dashboard
-          </h1>
-          <div className="z-10 mx-auto w-4/5 rounded-xl bg-base-200 p-8 text-base-content">
-            <h1 className="text-center text-xl font-medium md:text-left">
-              Time Series
+    <>
+      <Head>
+        <title>IoT Dashboard - Automatic Doorbell System</title>
+      </Head>
+      <div className={`min-h-screen bg-base-300 ${poppins.className}`}>
+        <MyHeader />
+        <main className="scrollbar container mx-auto mt-10">
+          <div className="mb-20 flex flex-col gap-8">
+            <h1 className="mx-auto text-3xl font-medium text-base-content">
+              Dashboard
             </h1>
-            <TimseriesZoomable
-              data={data.map((entry) => [
-                new Date(entry.dateTime).getTime(),
-                entry.value,
-              ])}
-            />
-          </div>
-
-          <div className="mx-auto w-4/5 rounded-xl bg-base-200 p-8 text-base-content">
-            <h1 className="text-center text-xl font-medium md:text-left">
-              Calendar
-            </h1>
-            <div className="scrollbar overflow-x-scroll lg:overflow-x-auto">
-              <MyResponsiveCalendar
-                data={data.map((entry) => ({
-                  day: entry.dateTime.split("T").shift(),
-                  value: entry.value,
-                }))}
+            <div className="z-10 mx-auto w-4/5 rounded-xl bg-base-200 p-8 text-base-content">
+              <h1 className="text-center text-xl font-medium md:text-left">
+                Time Series
+              </h1>
+              <TimseriesZoomable
+                data={data.map((entry) => [
+                  new Date(entry.dateTime).getTime(),
+                  entry.value,
+                ])}
               />
             </div>
-          </div>
-        </div>
-      </main>
-      <Footer />
 
-      <MyDetailDialog />
-      <MyMessageDialog />
-    </div>
+            <div className="mx-auto w-4/5 rounded-xl bg-base-200 p-8 text-base-content">
+              <h1 className="text-center text-xl font-medium md:text-left">
+                Calendar
+              </h1>
+              <div className="scrollbar overflow-x-scroll lg:overflow-x-auto">
+                <MyResponsiveCalendar
+                  data={data.map((entry) => ({
+                    day: entry.dateTime.split("T").shift(),
+                    value: entry.value,
+                  }))}
+                />
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+
+        <MyDetailDialog />
+        <MyMessageDialog />
+      </div>
+    </>
   );
 };
 
