@@ -1,13 +1,4 @@
 import { IClientOptions } from "mqtt";
-import {
-  url,
-  bucket,
-  org,
-  token,
-  brokerHostname,
-  brokerPort,
-  brokerTopic,
-} from "../../env";
 
 function getBaseUrl() {
   if (typeof window !== "undefined")
@@ -25,16 +16,22 @@ function getBaseUrl() {
 const baseUrl = getBaseUrl();
 
 const mqttConfig: IClientOptions = {
-  hostname: brokerHostname,
+  hostname: process.env.BROKER_HOSTNAME,
   protocolId: "MQTT",
   protocolVersion: 5,
   protocol: "ws",
-  port: brokerPort,
+  port: process.env.BROKER_PORT,
   clean: true,
   reconnectPeriod: 1000,
   connectTimeout: 30_000,
   rejectUnauthorized: false,
   clientId: "iot_web_dashboard",
 };
+
+const url = process.env.INFLUXDB_URL;
+const bucket = process.env.INFLUXDB_BUCKET;
+const org = process.env.INFLUXDB_ORG;
+const brokerTopic = process.env.BROKER_TOPIC;
+const token = process.env.INFLUXDB_TOKEN;
 
 export { url, bucket, org, token, baseUrl, mqttConfig, brokerTopic };

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  iot-dashboard:
+    image: arville27/iot-dashboard
+    build: .
+    ports:
+      - 3000:3000
+    restart: always
+    environment:
+      - INFLUXDB_URL=
+      - INFLUXDB_TOKEN=
+      - INFLUXDB_BUCKET=
+      - INFLUXDB_ORG=
+      - BROKER_HOSTNAME=
+      - BROKER_PORT=
+      - BROKER_TOPIC=
