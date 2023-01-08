@@ -19,7 +19,7 @@ const mqttConfig: IClientOptions = {
   hostname: process.env.NEXT_PUBLIC_BROKER_HOSTNAME,
   protocolId: "MQTT",
   protocolVersion: 5,
-  protocol: "ws",
+  protocol: "wss",
   port: process.env.NEXT_PUBLIC_BROKER_PORT,
   clean: true,
   reconnectPeriod: 1000,
