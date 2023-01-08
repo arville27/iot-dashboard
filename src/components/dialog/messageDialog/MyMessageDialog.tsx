@@ -1,6 +1,6 @@
 import useMyMessageDialogStore from "./useMyMessageDialogStore";
 import MasterDialog from "../MasterDialog";
-import { brokerTopic } from "../../../../env";
+import { brokerTopic } from "../../../utils/config";
 import { useState } from "react";
 
 const MyMessageDialog = () => {
