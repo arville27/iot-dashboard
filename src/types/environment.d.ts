@@ -5,9 +5,9 @@ declare global {
       INFLUXDB_TOKEN: string;
       INFLUXDB_BUCKET: string;
       INFLUXDB_ORG: string;
-      BROKER_HOSTNAME: string;
-      BROKER_PORT: number;
-      BROKER_TOPIC: string;
+      NEXT_PUBLIC_BROKER_HOSTNAME: string;
+      NEXT_PUBLIC_BROKER_PORT: number;
+      NEXT_PUBLIC_BROKER_TOPIC: string;
     }
   }
 }

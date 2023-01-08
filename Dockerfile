@@ -31,9 +31,6 @@ ENV INFLUXDB_URL=
 ENV INFLUXDB_TOKEN=
 ENV INFLUXDB_BUCKET=
 ENV INFLUXDB_ORG=
-ENV BROKER_HOSTNAME=
-ENV BROKER_PORT=
-ENV BROKER_TOPIC=
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 

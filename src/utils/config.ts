@@ -16,11 +16,11 @@ function getBaseUrl() {
 const baseUrl = getBaseUrl();
 
 const mqttConfig: IClientOptions = {
-  hostname: process.env.BROKER_HOSTNAME,
+  hostname: process.env.NEXT_PUBLIC_BROKER_HOSTNAME,
   protocolId: "MQTT",
   protocolVersion: 5,
   protocol: "ws",
-  port: process.env.BROKER_PORT,
+  port: process.env.NEXT_PUBLIC_BROKER_PORT,
   clean: true,
   reconnectPeriod: 1000,
   connectTimeout: 30_000,
@@ -28,10 +28,10 @@ const mqttConfig: IClientOptions = {
   clientId: "iot_web_dashboard",
 };
 
+const brokerTopic = process.env.NEXT_PUBLIC_BROKER_TOPIC;
 const url = process.env.INFLUXDB_URL;
 const bucket = process.env.INFLUXDB_BUCKET;
 const org = process.env.INFLUXDB_ORG;
-const brokerTopic = process.env.BROKER_TOPIC;
 const token = process.env.INFLUXDB_TOKEN;
 
 export { url, bucket, org, token, baseUrl, mqttConfig, brokerTopic };
